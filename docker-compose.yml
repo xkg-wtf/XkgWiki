@@ -1,0 +1,55 @@
+version: "3.4"
+
+services:
+  webapp:
+    env_file:
+      - postgres.env
+    depends_on:
+      - "postgres"
+      - "seq"
+    build: .
+    ports:
+      - 8580:5000
+      - 8581:5001
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Docker
+      - ASPNETCORE_URLS=https://+:5001;http://+:5000
+      - ASPNETCORE_Kestrel__Certificates__Default__Password=SECRETPASSWORD
+      - ASPNETCORE_Kestrel__Certificates__Default__Path=/https/aspnetapp.pfx
+    volumes:
+      - ~/.aspnet/https:/https:ro
+  postgres:
+    image: postgres:13.1
+    env_file:
+      - postgres.env
+    volumes:
+      - postgres-data:/var/lib/postgresql/data/
+  pgadmin:
+    image: dpage/pgadmin4:4.30
+    restart: always
+    env_file:
+      - pgadmin.env
+    environment:
+      PGADMIN_DEFAULT_EMAIL: admin@techiedesu.xyz
+      PGADMIN_DEFAULT_PASSWORD: password
+      PGADMIN_LISTEN_PORT: 80
+    ports:
+      - "8584:80"
+    volumes:
+      - pgadmin-data:/var/lib/pgadmin
+    links:
+      - "postgres"
+  seq:
+    image: datalust/seq:2020.5
+    volumes:
+      - /datadrive:/data
+    environment:
+      - ACCEPT_EULA=Y
+    ports: 
+      - 8583:80
+    volumes:
+      - seq-data:/data
+volumes:
+  postgres-data:
+  pgadmin-data:
+  seq-data:
