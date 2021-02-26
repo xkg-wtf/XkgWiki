@@ -4,23 +4,22 @@
     ViewData["Title"] = "Home Page";
 }
 
-<div class="text-center">
+<div>
     <h1 class="display-4">Edit page</h1>
 
     <form method="POST" asp-area="" asp-controller="Pages" asp-action="Edit" asp-route-url="@pageModel.Id">
         <div class="form-group form-check">
-            <input type="text" class="form-check-input" id="url" name="url" value="@pageModel.Url">
-            <label class="form-check-label" for="url">Check me out</label>
+            <input type="text" class="form-control" id="title" name="title" value="@pageModel.Title">
+            <label class="form-check-label" for="title">Title</label>
         </div>
         <div class="form-group form-check">
-            <input type="text" class="form-check-input" id="title" name="title" value="@pageModel.Title">
-            <label class="form-check-label" for="title">Check me out</label>
-        </div>
-        <div class="form-group form-check">
-            <textarea class="form-check-input" id="text" name="text">@pageModel.Text</textarea>
-            <label class="form-check-label" for="text">Check me out</label>
+            <textarea class="form-control" id="text" name="text">@pageModel.Text</textarea>
+            <label class="form-check-label" for="text">Text</label>
         </div>
 
-        <button type="submit" class="btn btn-primary">Submit</button>
+        <div class="form-group form-check">
+            <button type="submit" class="btn btn-primary">Submit</button>
+        </div>
+
     </form>
 </div>

@@ -2,23 +2,25 @@
     ViewData["Title"] = "Create new page";
 }
 
-<div class="text-center">
+<div>
     <h1 class="display-4">Create new page</h1>
 
     <form method="POST">
         <div class="form-group form-check">
-            <input type="text" class="form-check-input" id="url" name="url">
-            <label class="form-check-label" for="url">Check me out</label>
+            <input type="text" class="form-control" id="url" name="url">
+            <label class="form-check-label" for="url">Url</label>
         </div>
         <div class="form-group form-check">
-            <input type="text" class="form-check-input" id="title" name="title">
-            <label class="form-check-label" for="title">Check me out</label>
+            <input type="text" class="form-control" id="title" name="title">
+            <label class="form-check-label" for="title">Title</label>
         </div>
         <div class="form-group form-check">
-            <textarea class="form-check-input" id="text" name="text"></textarea>
-            <label class="form-check-label" for="text">Check me out</label>
+            <textarea class="form-control" id="text" name="text"></textarea>
+            <label class="form-check-label" for="text">Text</label>
         </div>
 
-        <button type="submit" class="btn btn-primary">Submit</button>
+        <div class="form-group form-check">
+            <button type="submit" class="btn btn-primary">Submit</button>
+        </div>
     </form>
 </div>

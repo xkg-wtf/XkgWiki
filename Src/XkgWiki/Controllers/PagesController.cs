@@ -61,7 +61,7 @@ namespace XkgWiki.Controllers
             _pageRepository.Save(page);
             await _unitOfWork.CommitAsync(cancellationToken);
 
-            return Ok();
+            return RedirectToAction(nameof(Details), new { page.Url });
         }
 
         // GET: PagesController/Edit/5
@@ -90,7 +90,6 @@ namespace XkgWiki.Controllers
 
             page.Text = model.Text;
             page.Title = model.Title;
-            page.Url = model.Url;
 
             _pageRepository.Save(page);
             await _unitOfWork.CommitAsync(cancellationToken);
