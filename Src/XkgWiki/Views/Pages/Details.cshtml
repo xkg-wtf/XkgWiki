@@ -1,0 +1,16 @@
+﻿@using XkgWiki.Domain
+@using Westwind.AspNetCore.Markdown
+@{
+    var pageModel = (Page)ViewBag.Page;
+    ViewData["Title"] = pageModel.Title;
+}
+
+@{
+    <h1>@pageModel.Title</h1>
+
+    <p>@Markdown.ParseHtmlString(pageModel.Text)</p>
+
+    <p>
+        <a asp-area="" asp-controller="Pages" asp-action="Edit" asp-route-url="@pageModel.Url">Edit</a>
+    </p>
+}

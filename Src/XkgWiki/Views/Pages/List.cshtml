@@ -1,0 +1,25 @@
+﻿@{
+    ViewData["Title"] = "List all pages";
+}
+
+<div class="text-center">
+    <h1 class="display-4">List all pages</h1>
+
+    <ul>
+        @{
+            var pageUrlsTitles = (Dictionary<string, string>)ViewBag.PageUrlsTitles;
+
+            if (pageUrlsTitles.Any())
+            {
+                foreach (var urlTitle in pageUrlsTitles)
+                {
+                    <li><a asp-area="" asp-controller="Pages" asp-action="Details" asp-route-url="@urlTitle.Key">@urlTitle.Value</a></li>
+                }
+            }
+            else
+            {
+                <p>No pages</p>
+            }
+        }
+    </ul>
+</div>
